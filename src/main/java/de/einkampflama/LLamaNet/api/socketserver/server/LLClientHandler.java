@@ -1,4 +1,4 @@
-package de.einkampflama.LLamaNet.api.socketserver;
+package de.einkampflama.LLamaNet.api.socketserver.server;
 
 import java.net.Socket;
 

@@ -1,4 +1,4 @@
-package de.einkampflama.LLamaNet.api.socketserver;
+package de.einkampflama.LLamaNet.api.socketserver.server;
 
 import de.einkampflama.LLamaNet.LLamaNet;
 import de.einkampflama.LLamaNet.api.LLController;
@@ -21,7 +21,7 @@ import java.time.format.DateTimeFormatter;
 public class LLServerSocket extends ServerSocket implements LLController {
 
     private boolean acceptClients = false;
-    private LLamaNet lLamaNet;
+    private final LLamaNet lLamaNet;
     private Logger logger;
 
     /**
