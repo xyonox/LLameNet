@@ -6,8 +6,12 @@ import org.jetbrains.annotations.Nullable;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * @author Xyonox
+ * @version 1.0.0
+ * @since alpha-1.0.0
+ */
 public class LoggerImpl implements Logger{
-
 
     @Override
     public void info(@Nullable String content) {

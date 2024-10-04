@@ -24,7 +24,7 @@ public class LLamaNet {
         LLServerSocket s = null;
         try {
             s = new LLServerSocket(t, 9999);
-            s.setAcceptClients(false);
+            s.setAcceptClients(true);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

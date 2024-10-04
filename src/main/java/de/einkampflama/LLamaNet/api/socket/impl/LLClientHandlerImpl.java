@@ -10,6 +10,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ * @author Xyonox
+ * @version 1.0.0
+ * @since alpha-1.0.0
+ */
 public class LLClientHandlerImpl implements LLClientHandler {
     private Logger logger;
     private final LLamaNet lLamaNet;
@@ -18,7 +23,6 @@ public class LLClientHandlerImpl implements LLClientHandler {
         this.lLamaNet = lLamaNet;
         this.logger = lLamaNet.getLogger();
     }
-
 
     @Override
     public void handle(Socket clientSocket) {
@@ -34,7 +38,6 @@ public class LLClientHandlerImpl implements LLClientHandler {
                     System.out.println("Client ended the connection");
                     break;
                 }
-
 
                 out.println("Server hat empfangen: " + message);
             }
