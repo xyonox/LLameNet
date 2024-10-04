@@ -32,7 +32,7 @@ public class LoggerImpl implements Logger{
     public synchronized void log(@NotNull LogLevel level, @Nullable String content) {
         System.out.println(
                 level.getPrefix() +
-                        OffsetDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")) + " -> " + content
+                        OffsetDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")) + " -> " + content + "\u001b[0m"
         );
     }
 }

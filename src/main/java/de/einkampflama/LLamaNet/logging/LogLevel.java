@@ -21,7 +21,7 @@ public enum LogLevel {
     /**
      * NotAllowed level - Color output: Red
      */
-    NOTALLOWED("\u001b[35;1mDEBUG\u001b[0m");
+    NOTALLOWED("\u001b[35;1m");
 
     private final String prefix;
 
