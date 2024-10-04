@@ -1,4 +1,4 @@
-package de.einkampflama.LLamaNet.api.socketserver.client;
+package de.einkampflama.LLamaNet.api.socket.client;
 
 import de.einkampflama.LLamaNet.LLamaNet;
 
@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 /**
  * EXAMPLE CLIENT `testing`

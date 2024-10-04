@@ -1,8 +1,7 @@
 package de.einkampflama;
 
 import de.einkampflama.LLamaNet.LLamaNet;
-import de.einkampflama.LLamaNet.api.socketserver.client.LLClient;
-import de.einkampflama.LLamaNet.logging.LoggerImpl;
+import de.einkampflama.LLamaNet.api.socket.client.LLClient;
 
 public class Main {
     public static void main(String[] args) {

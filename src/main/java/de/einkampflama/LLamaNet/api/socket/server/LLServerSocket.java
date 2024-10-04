@@ -1,4 +1,4 @@
-package de.einkampflama.LLamaNet.api.socketserver.server;
+package de.einkampflama.LLamaNet.api.socket.server;
 
 import de.einkampflama.LLamaNet.LLamaNet;
 import de.einkampflama.LLamaNet.api.LLController;

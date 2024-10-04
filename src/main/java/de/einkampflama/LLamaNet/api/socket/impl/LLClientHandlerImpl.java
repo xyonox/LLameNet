@@ -1,7 +1,7 @@
-package de.einkampflama.LLamaNet.api.socketserver.impl;
+package de.einkampflama.LLamaNet.api.socket.impl;
 
 import de.einkampflama.LLamaNet.LLamaNet;
-import de.einkampflama.LLamaNet.api.socketserver.server.LLClientHandler;
+import de.einkampflama.LLamaNet.api.socket.server.LLClientHandler;
 import de.einkampflama.LLamaNet.logging.Logger;
 
 import java.io.BufferedReader;
