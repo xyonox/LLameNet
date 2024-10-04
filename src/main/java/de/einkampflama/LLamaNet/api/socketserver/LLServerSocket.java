@@ -1,13 +1,13 @@
 package de.einkampflama.LLamaNet.api.socketserver;
 
 import de.einkampflama.LLamaNet.LLamaNet;
+import de.einkampflama.LLamaNet.api.LLController;
 import de.einkampflama.LLamaNet.logging.Logger;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketImpl;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -63,6 +63,25 @@ public class LLServerSocket extends ServerSocket implements LLController {
         start(OffsetDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
     }
 
+    /**
+     * Listing client -> send the client to the LLClientHandler
+     *
+     * @param handler
+     * @throws IOException
+     */
+    public void listen(LLClientHandler handler) throws IOException {
+        while (acceptClients){
+            Socket clientSocket = this.accept();
+            handler.synchronizedHandle(clientSocket);
+        }
+    }
+
+    /**
+     * Overwrite accept() - adding log info
+     *
+     * @return
+     * @throws IOException
+     */
     @Override
     public Socket accept() throws IOException {
         Socket clientSocket = super.accept();
