@@ -24,6 +24,11 @@ public class LoggerImpl implements Logger{
         log(LogLevel.EXCEPTIONS, content);
     }
 
+    @Override
+    public void notAllowed(@Nullable String content) {
+        log(LogLevel.NOTALLOWED, content);
+    }
+
     public synchronized void log(@NotNull LogLevel level, @Nullable String content) {
         System.out.println(
                 level.getPrefix() +

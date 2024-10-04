@@ -17,7 +17,11 @@ public enum LogLevel {
     /**
      * Exception level - Color output: Orange
      */
-    EXCEPTIONS("\u001b[38;5;214m");
+    EXCEPTIONS("\u001b[38;5;214m"),
+    /**
+     * NotAllowed level - Color output: Red
+     */
+    NOTALLOWED("\u001b[35;1mDEBUG\u001b[0m");
 
     private final String prefix;
 

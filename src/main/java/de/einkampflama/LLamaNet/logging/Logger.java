@@ -26,4 +26,5 @@ public interface Logger {
      * @param content Log output. can´t be null {func(null) ≠ runtime}
      */
     public void exception(@Nullable String content);
+    public void notAllowed(@Nullable String content);
 }
