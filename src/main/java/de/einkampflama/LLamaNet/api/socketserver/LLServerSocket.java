@@ -70,9 +70,13 @@ public class LLServerSocket extends ServerSocket implements LLController {
      * @throws IOException
      */
     public void listen(LLClientHandler handler) throws IOException {
-        while (acceptClients){
-            Socket clientSocket = this.accept();
-            handler.synchronizedHandle(clientSocket);
+        if(acceptClients)
+            while (acceptClients){
+                Socket clientSocket = this.accept();
+                handler.synchronizedHandle(clientSocket);
+             }
+        else {
+            logger.notAllowed("Boolean (acceptClients | form LLServerSocket) don't allow to listen clients.");
         }
     }
 
@@ -111,7 +115,7 @@ public class LLServerSocket extends ServerSocket implements LLController {
 
     @Override
     public void stop(String time) {
-
+        setAcceptClients(false);
     }
 
     @Override
