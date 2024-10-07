@@ -18,4 +18,8 @@ public abstract class RouteFace {
     public synchronized void handle(Exchange exchange){
 
     }
+
+    public Route getInfo() {
+        return info;
+    }
 }

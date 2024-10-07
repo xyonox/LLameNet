@@ -6,7 +6,6 @@ import com.sun.net.httpserver.HttpExchange;
 import de.einkampflama.LLamaNet.api.webserver.answer.Exchange;
 import de.einkampflama.LLamaNet.api.webserver.answer.Request;
 import de.einkampflama.LLamaNet.api.webserver.answer.Response;
-import de.einkampflama.LLamaNet.api.webserver.route.RouteHandler;
 import de.einkampflama.LLamaNet.api.webserver.route.RouteFace;
 
 import java.io.IOException;
@@ -20,11 +19,9 @@ import java.util.concurrent.Executors;
  */
 public class LLWebServer {
     private final HttpServer server;
-    private final RouteHandler routeHandler;
 
-    public LLWebServer(int port, RouteHandler routeHandler) throws IOException {
+    public LLWebServer(int port) throws IOException {
         this.server = HttpServer.create(new InetSocketAddress(port), 0);
-        this.routeHandler = routeHandler;
 
         server.setExecutor(Executors.newCachedThreadPool());
     }
@@ -38,8 +35,8 @@ public class LLWebServer {
         server.stop(delay);
     }
 
-    public void registerRoute(String path, RouteFace routeFace) {
-        server.createContext(path, new HttpHandler() {
+    public void registerRoute(RouteFace routeFace) {
+        server.createContext(routeFace.getInfo().path(), new HttpHandler() {
             @Override
             public void handle(HttpExchange exchange) throws IOException {
                 try {
@@ -61,7 +58,4 @@ public class LLWebServer {
         });
     }
 
-    public void registerRoutes() {
-        routeHandler.getRoutes().forEach(this::registerRoute);
-    }
 }
