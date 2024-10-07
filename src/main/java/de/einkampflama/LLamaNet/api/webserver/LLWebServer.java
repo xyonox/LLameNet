@@ -26,7 +26,6 @@ public class LLWebServer {
         this.server = HttpServer.create(new InetSocketAddress(port), 0);
         this.routeHandler = routeHandler;
 
-        // Setze den Executor auf einen Cached Thread Pool, um Anfragen parallel zu bearbeiten
         server.setExecutor(Executors.newCachedThreadPool());
     }
 
@@ -44,18 +43,14 @@ public class LLWebServer {
             @Override
             public void handle(HttpExchange exchange) throws IOException {
                 try {
-                    // Erstelle die Anfrage- und Antwortobjekte
                     Request request = new Request(exchange);
                     Response response = new Response(exchange);
                     Exchange exchangeObj = new Exchange(request, response);
 
-                    // Rufe den Handler der Route auf
                     routeFace.handle(exchangeObj);
 
-                    // Schliesse die Antwort
                     response.close();
                 } catch (Exception e) {
-                    // Fehlerbehandlung
                     e.printStackTrace();
                     String errorMessage = "500 Internal Server Error: " + e.getMessage();
                     exchange.sendResponseHeaders(500, errorMessage.length());
