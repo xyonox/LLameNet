@@ -13,18 +13,18 @@ public interface Logger {
      *
      * @param content Log output. can´t be null {func(null) ≠ runtime}
      */
-    public void info(@Nullable String content);
+    void info(@Nullable String content);
     /**
      * Log error stuff
      *
      * @param content Log output. can´t be null {func(null) ≠ runtime}
      */
-    public void error(@Nullable String content);
+    void error(@Nullable String content);
     /**
      * Log exception stuff
      *
      * @param content Log output. can´t be null {func(null) ≠ runtime}
      */
-    public void exception(@Nullable String content);
-    public void notAllowed(@Nullable String content);
+    void exception(@Nullable String content);
+    void notAllowed(@Nullable String content);
 }
