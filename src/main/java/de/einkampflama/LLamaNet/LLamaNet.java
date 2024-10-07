@@ -7,6 +7,11 @@ import de.einkampflama.LLamaNet.logging.LoggerImpl;
 
 import java.io.IOException;
 
+/**
+ * @author Xyonox
+ * @version 1.0.0
+ * @since alpha-1.0.0
+ */
 public class LLamaNet {
     private Logger logger;
 

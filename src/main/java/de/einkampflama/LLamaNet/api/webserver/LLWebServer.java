@@ -13,6 +13,11 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
 
+/**
+ * @author Xyonox
+ * @version 1.0.0
+ * @since alpha-1.0.0
+ */
 public class LLWebServer {
     private final HttpServer server;
     private final RouteHandler routeHandler;

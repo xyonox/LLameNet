@@ -6,6 +6,11 @@ import com.sun.net.httpserver.HttpExchange;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * @author Xyonox
+ * @version 1.0.0
+ * @since alpha-1.0.0
+ */
 public class Request {
     private final HttpExchange exchange;
     private final InputStream stream;
