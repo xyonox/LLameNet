@@ -6,7 +6,7 @@ package de.einkampflama.LLamaNet.api;
  * @since alpha-1.0.0
  */
 public interface LLController {
-    public void start(String time);
-    public void stop(String time);
-    public void restart(String time);
+    void start(String time);
+    void stop(String time);
+    void restart(String time);
 }
