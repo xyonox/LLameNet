@@ -46,6 +46,10 @@ public class Response {
         print(jsonBuilder.toString());
     }
 
+    public void setCookie(Cookie cookie) {
+        headers.add("Set-Cookie", cookie.toSetCookieHeader());
+    }
+
     public void print(String content) throws IOException {
         print(content.getBytes(StandardCharsets.UTF_8));
     }

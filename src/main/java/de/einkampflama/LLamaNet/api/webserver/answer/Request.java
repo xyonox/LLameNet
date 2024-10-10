@@ -4,8 +4,12 @@ import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 
 import java.io.*;
+import java.net.HttpCookie;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author Xyonox
@@ -29,6 +33,58 @@ public class Request {
         this.code = 200;
     }
 
+    public Map<String, String> getQuery() {
+        String query = exchange.getRequestURI().getQuery();
+        Map<String, String> queryParams = new HashMap<>();
+        if (query != null && !query.isEmpty()) {
+            String[] pairs = query.split("&");
+            for (String pair : pairs) {
+                String[] keyValue = pair.split("=");
+                if (keyValue.length > 1) {
+                    queryParams.put(keyValue[0], keyValue[1]);
+                } else {
+                    queryParams.put(keyValue[0], "");
+                }
+            }
+        }
+        return queryParams;
+    }
+
+    public Map<String, String> getPostParams() throws IOException {
+        String body = getBodyAsString();
+        Map<String, String> postParams = new HashMap<>();
+
+        if (body != null && !body.isEmpty()) {
+            String[] pairs = body.split("&");
+            for (String pair : pairs) {
+                String[] keyValue = pair.split("=");
+                if (keyValue.length == 2) {
+                    postParams.put(keyValue[0], keyValue[1]);
+                }
+            }
+        }
+        return postParams;
+    }
+
+    public Map<String, String> getCookies() {
+        Map<String, String> cookieMap = new HashMap<>();
+        String cookieHeader = headers.getFirst("Cookie");
+
+        if (cookieHeader != null) {
+            String[] cookies = cookieHeader.split("; ");
+            for (String cookie : cookies) {
+                String[] keyValue = cookie.split("=");
+                if (keyValue.length == 2) {
+                    String name = keyValue[0].trim();
+                    String value = keyValue[1].trim();
+                    cookieMap.put(name, value);
+                }
+            }
+        }
+
+        return cookieMap;
+    }
+
     public Map<String, String> getBody() throws IOException {
         StringBuilder body = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
@@ -39,6 +95,12 @@ public class Request {
         }
 
         return formToMap(body.toString());
+    }
+
+    public String getBodyAsString() throws IOException {
+        InputStreamReader isr = new InputStreamReader(exchange.getRequestBody(), StandardCharsets.UTF_8);
+        BufferedReader reader = new BufferedReader(isr);
+        return reader.lines().collect(Collectors.joining("\n"));
     }
 
     private Map<String, String> formToMap(String form) {
